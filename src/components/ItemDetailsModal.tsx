@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from "next/image";
 
-interface Item {
+export interface Item {
     id: string;
     name: string;
     types: string[];
@@ -46,8 +46,8 @@ const ItemDetailsModal: React.FC<ItemDetailsModalProps> = ({item, isOpen, onClos
                 <p className="text-white">Price Change Last 48h: {item.changeLast48hPercent}%</p>
                 <div className="text-bullet-casing">
                     <strong>Sell For:</strong>
-                    {item.sellFor.map((sell, index) => (
-                        <p key={index}>{sell.source}: ${sell.price.toLocaleString()}</p>
+                    {item.sellFor.map((sell) => (
+                        <p key={sell.source}>{sell.source}: ${sell.price.toLocaleString()}</p>
                     ))}
                 </div>
                 <button onClick={onClose}
