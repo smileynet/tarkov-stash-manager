@@ -1,8 +1,7 @@
 'use client';
-
 import React, {useState} from 'react';
-import ItemInputForm from './ItemInputForm';
 import StashDisplay from './StashDisplay';
+import ItemInputForm from './ItemInputForm';
 
 interface Item {
     id: number;
@@ -13,16 +12,23 @@ interface Item {
 
 const Main: React.FC = () => {
     const [items, setItems] = useState<Item[]>([]);
+    const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
-    const addItem = (name: string, category: string, quantity: number) => {
-        const newItem = {id: items.length + 1, name, category, quantity};
-        setItems([...items, newItem]);
+    const onEditItem = (updatedItem: Item) => {
+        setItems(items.map(item => item.id === updatedItem.id ? updatedItem : item));
     };
 
     return (
-        <main className="bg-night-ops-black text-white p-6">
-            <ItemInputForm onAddItem={addItem}/>
-            <StashDisplay items={items}/>
+        <main>
+            <ItemInputForm onAddItem={(name, category, quantity) => {
+                setItems([...items, {id: items.length + 1, name, category, quantity}]);
+            }}/>
+            <StashDisplay
+                items={items}
+                onEditItem={onEditItem}
+                selectedItem={selectedItem}
+                setSelectedItem={setSelectedItem}
+            />
         </main>
     );
 };
