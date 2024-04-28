@@ -1,5 +1,4 @@
 'use client';
-
 import React, {useState} from 'react';
 
 interface ItemInputFormProps {
@@ -20,33 +19,54 @@ const ItemInputForm: React.FC<ItemInputFormProps> = ({onAddItem}) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}
+              className="flex flex-col gap-4 p-4 bg-night-ops-black text-white rounded-lg shadow-lg max-w-lg mx-auto">
+            <label htmlFor="name" className="font-bold">
+                Item Name
+            </label>
             <input
                 type="text"
+                id="name"
                 name="name"
                 value={input.name}
                 onChange={handleInputChange}
-                placeholder="Item name"
+                placeholder="Enter item name"
                 required
+                className="p-2 rounded bg-tactical-grey placeholder-combat-green"
             />
+
+            <label htmlFor="category" className="font-bold">
+                Category
+            </label>
             <input
                 type="text"
+                id="category"
                 name="category"
                 value={input.category}
                 onChange={handleInputChange}
-                placeholder="Category"
+                placeholder="Enter item category"
                 required
+                className="p-2 rounded bg-tactical-grey placeholder-combat-green"
             />
+
+            <label htmlFor="quantity" className="font-bold">
+                Quantity
+            </label>
             <input
                 type="number"
+                id="quantity"
                 name="quantity"
                 value={input.quantity.toString()}
                 onChange={handleInputChange}
-                placeholder="Quantity"
+                placeholder="Enter quantity"
                 min="1"
                 required
+                className="p-2 rounded bg-tactical-grey placeholder-combat-green"
             />
-            <button type="submit">Add Item</button>
+
+            <button type="submit" className="bg-rusty-metal hover:bg-bullet-casing text-white font-bold p-2 rounded">
+                Add Item
+            </button>
         </form>
     );
 };

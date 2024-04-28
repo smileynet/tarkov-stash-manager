@@ -20,7 +20,7 @@ const Main: React.FC = () => {
     };
 
     return (
-        <main>
+        <main className="bg-night-ops-black text-white p-6">
             <ItemInputForm onAddItem={addItem}/>
             <StashDisplay items={items}/>
         </main>
