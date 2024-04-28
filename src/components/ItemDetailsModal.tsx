@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from "next/image";
 
-export interface Item {
+export interface DetailedItem {
     id: string;
     name: string;
     types: string[];
@@ -20,7 +20,7 @@ export interface Item {
 }
 
 interface ItemDetailsModalProps {
-    item: Item;
+    item: DetailedItem;
     isOpen: boolean;
     onClose: () => void;
 }
